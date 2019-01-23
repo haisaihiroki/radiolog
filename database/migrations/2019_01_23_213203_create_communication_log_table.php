@@ -33,6 +33,7 @@ class CreateCommunicationLogTable extends Migration
             $table->float('my_power')->nullable();
             $table->float('his_power')->nullable();
             $table->boolean('is_public');
+            $table->string('uuid');
         });
     }
 
