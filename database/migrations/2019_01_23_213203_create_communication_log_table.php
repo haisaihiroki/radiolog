@@ -31,7 +31,7 @@ class CreateCommunicationLogTable extends Migration
             $table->float('band');
             $table->integer('mode_id');
             $table->float('my_power')->nullable();
-            $table->float('his_float')->nullable();
+            $table->float('his_power')->nullable();
             $table->boolean('is_public');
         });
     }
