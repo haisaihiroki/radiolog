@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Band extends Model
+class Mode extends Model
 {
-    //
+    protected $fillable = ['name'];
 }
