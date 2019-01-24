@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommunicationLogTable extends Migration
+class CreateCommunicationLogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCommunicationLogTable extends Migration
      */
     public function up()
     {
-        Schema::create('communication_log', function (Blueprint $table) {
+        Schema::create('communication_logs', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->integer('user_id');
@@ -44,6 +44,6 @@ class CreateCommunicationLogTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('communication_log');
+        Schema::dropIfExists('communication_logs');
     }
 }

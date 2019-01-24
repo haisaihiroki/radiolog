@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            BandsTableSeeder::class,
+            ModesTableSeeder::class,
             ReadabilitiesTableSeeder::class,
             SignalStrengthsTableSeeder::class,
             TonesTableSeeder::class,
