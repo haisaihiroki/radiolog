@@ -87,6 +87,10 @@
                 <div class="links">
                     <a href="https://github.com/haisaihiroki/radiolog">GitHub</a>
                 </div>
+
+                <div>
+                    <p>まだまだBeta版です。ご自由にお使いください。データが壊れるかもしれません。<br />何かありましたら<a href="https://twitter.com/haisaihiroki">@haisaihiroki</a>までご連絡ください。</p>
+                </div>
             </div>
         </div>
     </body>
