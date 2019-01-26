@@ -18,3 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/create', 'HomeController@createLog')->name('createLog');
+Route::post('/home/create/save', 'HomeController@saveCreateLog')->name('saveLog');
