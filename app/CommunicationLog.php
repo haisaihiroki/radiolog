@@ -22,32 +22,32 @@ class CommunicationLog extends Model
 
     public function my_Readability()
     {
-        return $this->hasOne('App\Readability', 'id', 'my_r');
+        return $this->belongsTo('App\Readability', 'my_r', 'readability');
     }
 
     public function his_Readability()
     {
-        return $this->hasOne('App\Readability', 'id', 'his_r');
+        return $this->belongsTo('App\Readability', 'his_r', 'readability');
     }
 
     public function my_SignalStrength()
     {
-        return $this->hasOne('App\SignalStrength', 'id', 'my_s');
+        return $this->belongsTo('App\SignalStrength', 'my_s', 'strength');
     }
 
     public function his_SignalStrength()
     {
-        return $this->hasOne('App\SignalStrength', 'id', 'his_s');
+        return $this->belongsTo('App\SignalStrength', 'his_s', 'strength');
     }
 
     public function my_Tone()
     {
-        return $this->hasOne('App\Tone', 'id', 'my_t');
+        return $this->belongsTo('App\Tone', 'my_t', 'tone');
     }
 
     public function his_Tone()
     {
-        return $this->hasOne('App\Tone', 'id', 'his_t');
+        return $this->belongsTo('App\Tone', 'his_t', 'tone');
     }
 
     public function my_RST()
