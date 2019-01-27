@@ -143,11 +143,11 @@
                 </div>
                 <div class="form-group">
                     <label for="MyPower">My Power (W)</label>
-                    <input type="number" class="form-control" id="MyPower" step="0.1" name="MyPower" placeholder="5" value="{{ old('MyPower') }}" required>
+                    <input type="number" class="form-control" id="MyPower" step="0.1" name="MyPower" placeholder="5" value="{{ old('MyPower') }}">
                 </div>
                 <div class="form-group">
                     <label for="HisPower">His Power (W)</label>
-                    <input type="number" class="form-control" id="HisPower" step="0.1" name="HisPower" placeholder="0.1" value="{{ old('HisPower') }}" required>
+                    <input type="number" class="form-control" id="HisPower" step="0.1" name="HisPower" placeholder="0.1" value="{{ old('HisPower') }}">
                 </div>
                 <input type="submit" class="btn">
             </form>
