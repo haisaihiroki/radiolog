@@ -69,10 +69,16 @@ class HomeController extends Controller
         $recode->his_qth = $request->HisQTH;
         $recode->my_r = $request->MyR;
         $recode->my_s = $request->MyS;
-        //$recode->my_t = $request->MyT;
+        if ($request->MyT != "")
+        {
+            $recode->my_t = $request->MyT;
+        }
         $recode->his_r = $request->HisR;
         $recode->his_s = $request->HisS;
-        //$recode->his_t = $request->HisT;
+        if ($request->HisT != "")
+        {
+            $recode->his_t = $request->HisT;
+        }
         $recode->my_power = $request->MyPower;
         $recode->his_power = $request->HisPower;
         $recode->is_public = false;
