@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Faker\Provider\DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\CommunicationLog;
@@ -46,23 +45,24 @@ class HomeController extends Controller
             'Date' => 'required|date',
             'Time' => 'required',
             'Band' => 'required|numeric',
-            'Mode' => 'required',
-            'MyQTH' => 'max:255',
-            'HisQTH' => 'max:255',
-            'MyR' => 'required|digits_between:1,5',
-            'MyS' => 'required|digits_between:1,9',
-            'MyT' => '',
-            'HisR' => 'required|digits_between:1,5',
-            'HisS' => 'required|digits_between:1,9',
-            'HisT' => '',
-            'MyPower' => 'numeric',
-            'HisPower' => 'numeric',
+            'Mode' => 'required|exists:modes,id',
+            'MyQTH' => 'nullable|max:255',
+            'HisQTH' => 'nullable|max:255',
+            'MyR' => 'required|exists:readabilities,readability',
+            'MyS' => 'required|exists:signal_strengths,strength',
+            'MyT' => 'nullable|exists:tones,tone',
+            'HisR' => 'required|exists:readabilities,readability',
+            'HisS' => 'required|exists:signal_strengths,strength',
+            'HisT' => 'nullable|exists:tones,tone',
+            'MyPower' => 'nullable|numeric',
+            'HisPower' => 'nullable|numeric',
         ]);
 
         $recode = new CommunicationLog();
-        $recode->his_callsign = $request->HisCallSign;
+        $recode->his_callsign = strtoupper($request->HisCallSign);
         $recode->his_name = $request->HisName;
-        $recode->time = DateTime::dateTime($request->Date . " " . $request->Time);
+        $formant = "Y-m-d H:i";
+        $recode->time = \DateTime::createFromFormat($formant, $request->Date . " " . $request->Time);
         $recode->band = $request->Band;
         $recode->mode_id = $request->Mode;
         $recode->my_qth = $request->MyQTH;
