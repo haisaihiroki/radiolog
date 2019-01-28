@@ -27,14 +27,14 @@
                         <th scope="col">His QTH</th>
                         <th scope="col">My RST</th>
                         <th scope="col">His RST</th>
-                        <th scope="col">Band</th>
+                        <th scope="col">Band(MHz)</th>
                         <th scope="col">Mode</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($logs as $log)
+                    @foreach ($logs as $key => $log)
                         <tr>
-                            <td>{{ $log->id }}</td>
+                            <td>{{ $key }}</td>
                             <td>{{ $log->his_callsign }}</td>
                             <td>{{ $log->his_name }}</td>
                             <td>{{ $log->time }}</td>
