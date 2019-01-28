@@ -56,6 +56,7 @@ class HomeController extends Controller
             'HisT' => 'nullable|exists:tones,tone',
             'MyPower' => 'nullable|numeric',
             'HisPower' => 'nullable|numeric',
+            'Note' => 'nullable',
         ]);
 
         $recode = new CommunicationLog();
@@ -83,6 +84,7 @@ class HomeController extends Controller
         $recode->his_power = $request->HisPower;
         $recode->is_public = false;
         $recode->uuid = Str::uuid();
+        $recode->note = $request->Note;
 
         $user = Auth::user();
         $user->communicationLogs()->save($recode);

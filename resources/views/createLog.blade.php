@@ -164,6 +164,10 @@
                         <input type="number" class="form-control" id="HisPower" step="0.1" name="HisPower" placeholder="0.1" value="{{ old('HisPower') }}">
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="Note">Note</label>
+                    <textarea id="Note" class="form-control" name="Note">{{ old('Note') }}</textarea>
+                </div>
                 <input type="submit" class="btn btn-primary">
             </form>
         </div>
