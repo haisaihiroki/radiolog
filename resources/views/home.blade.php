@@ -34,7 +34,7 @@
                     <tbody>
                     @foreach ($logs as $key => $log)
                         <tr>
-                            <td>{{ $key }}</td>
+                            <td><a href="{{ route('viewLog', $log->uuid) }}">{{ $count - $key }}</a></td>
                             <td>{{ $log->his_callsign }}</td>
                             <td>{{ $log->his_name }}</td>
                             <td>{{ $log->time }}</td>

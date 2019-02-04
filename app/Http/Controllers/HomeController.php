@@ -29,7 +29,9 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $logs = $user->communicationLogs()->orderBy('created_at', 'desc')->take(50)->get();
-        return view('home', compact('logs'));
+        $count = count($logs);
+
+        return view('home', compact('logs', 'count'));
     }
 
     public function createLog()
