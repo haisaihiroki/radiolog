@@ -94,4 +94,27 @@ class HomeController extends Controller
         return redirect(route('home'));
 
     }
+    public function editCommunicationLog($uuid)
+    {
+        $user = Auth::user();
+        $log = $user->communicationLogs()->where('uuid', $uuid)->firstOrFail();
+
+        return view('editLog', compact('log', 'uuid'));
+    }
+
+    public function saveCommunicationLog($uuid)
+    {
+        $user = Auth::user();
+        $log = $user->communicationLogs()->where('uuid', $uuid)->firstOrFail();
+
+        return redirect(route('home'));
+    }
+
+    public function viewCommunicationLog($uuid)
+    {
+        $user = Auth::user();
+        $log = $user->communicationLogs()->where('uuid', $uuid)->firstOrFail();
+
+        return view('viewLog', compact('log', 'uuid'));
+    }
 }

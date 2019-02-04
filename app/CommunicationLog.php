@@ -15,11 +15,6 @@ class CommunicationLog extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function mode()
-    {
-        return $this->belongsTo('App\Mode');
-    }
-
     public function my_Readability()
     {
         return $this->belongsTo('App\Readability', 'my_r', 'readability');
@@ -62,6 +57,7 @@ class CommunicationLog extends Model
             return $rs . $this->my_Tone()->first()->tone;
         }
     }
+
     public function his_RST()
     {
         $rs = $this->his_Readability()->first()->readability . $this->his_SignalStrength()->first()->strength;
@@ -73,5 +69,25 @@ class CommunicationLog extends Model
         else {
             return $rs . $this->his_Tone()->first()->tone;
         }
+    }
+
+    public function mode()
+    {
+        switch ($this->mode_id)
+        {
+            case 1:
+                return "AM";
+            case 2:
+                return "FM";
+            case 3:
+                return "SSB";
+            case 4:
+                return "CW";
+            case 5:
+                return "DV";
+            default:
+                return "";
+        }
+
     }
 }

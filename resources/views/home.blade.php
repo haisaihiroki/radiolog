@@ -43,7 +43,7 @@
                             <td>{{ $log->my_RST() }}</td>
                             <td>{{ $log->his_RST() }}</td>
                             <td>{{ $log->band }}</td>
-                            <td>{{ $log->mode()->first()->name }}</td>
+                            <td>{{ $log->mode() }}</td>
                         </tr>
                     @endforeach
                     </tbody>
