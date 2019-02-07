@@ -65,7 +65,7 @@
             </div>
             <div class="form-group">
                 <h5>Note</h5>
-                <textarea id="Note" class="form-control" name="Note" readonly>{{ $log->note }}</textarea>
+                <pre>{{ $log->note }}</pre>
             </div>
         </div>
     </div>
