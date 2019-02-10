@@ -98,8 +98,9 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $log = $user->communicationLogs()->where('uuid', $uuid)->firstOrFail();
+        $dateTime = \DateTime::createFromFormat("Y-m-d H:i:s", $log->time);
 
-        return view('editLog', compact('log', 'uuid'));
+        return view('editLog', compact('log', 'uuid', 'dateTime'));
     }
 
     public function saveCommunicationLog($uuid)
