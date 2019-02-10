@@ -103,10 +103,58 @@ class HomeController extends Controller
         return view('editLog', compact('log', 'uuid', 'dateTime'));
     }
 
-    public function saveCommunicationLog($uuid)
+    public function saveCommunicationLog(Request $request)
     {
+        $validatedData = $request->validate([
+            'HisCallSign' => 'required|max:255|alpha_num',
+            'HisName' => 'max:255',
+            'Date' => 'required|date',
+            'Time' => 'required',
+            'Band' => 'required|numeric',
+            'Mode' => 'required|exists:modes,id',
+            'MyQTH' => 'nullable|max:255',
+            'HisQTH' => 'nullable|max:255',
+            'MyR' => 'required|exists:readabilities,readability',
+            'MyS' => 'required|exists:signal_strengths,strength',
+            'MyT' => 'nullable|exists:tones,tone',
+            'HisR' => 'required|exists:readabilities,readability',
+            'HisS' => 'required|exists:signal_strengths,strength',
+            'HisT' => 'nullable|exists:tones,tone',
+            'MyPower' => 'nullable|numeric',
+            'HisPower' => 'nullable|numeric',
+            'Note' => 'nullable',
+        ]);
+
         $user = Auth::user();
-        $log = $user->communicationLogs()->where('uuid', $uuid)->firstOrFail();
+        $log = $user->communicationLogs()->where('uuid', $request->uuid)->firstOrFail();
+
+        $log->his_callsign = strtoupper($request->HisCallSign);
+        $log->his_name = $request->HisName;
+        $formant = "Y-m-d H:i";
+        $log->time = \DateTime::createFromFormat($formant, $request->Date . " " . $request->Time);
+        $log->band = $request->Band;
+        $log->mode_id = $request->Mode;
+        $log->my_qth = $request->MyQTH;
+        $log->his_qth = $request->HisQTH;
+        $log->my_r = $request->MyR;
+        $log->my_s = $request->MyS;
+        if ($request->MyT != "")
+        {
+            $log->my_t = $request->MyT;
+        }
+        $log->his_r = $request->HisR;
+        $log->his_s = $request->HisS;
+        if ($request->HisT != "")
+        {
+            $log->his_t = $request->HisT;
+        }
+        $log->my_power = $request->MyPower;
+        $log->his_power = $request->HisPower;
+        $log->is_public = false;
+        $log->uuid = Str::uuid();
+        $log->note = $request->Note;
+
+        $log->save();
 
         return redirect(route('home'));
     }
