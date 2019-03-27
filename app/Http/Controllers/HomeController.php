@@ -151,7 +151,6 @@ class HomeController extends Controller
         $log->my_power = $request->MyPower;
         $log->his_power = $request->HisPower;
         $log->is_public = false;
-        $log->uuid = Str::uuid();
         $log->note = $request->Note;
 
         $log->save();
