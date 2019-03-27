@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\CommunicationLog;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 
@@ -85,7 +86,7 @@ class HomeController extends Controller
         $recode->my_power = $request->MyPower;
         $recode->his_power = $request->HisPower;
         $recode->is_public = false;
-        $recode->uuid = Str::uuid();
+        $recode->uuid = $this->makeUUID();
         $recode->note = $request->Note;
 
         $user = Auth::user();
@@ -156,6 +157,21 @@ class HomeController extends Controller
         $log->save();
 
         return redirect(route('home'));
+    }
+
+    private function makeUUID()
+    {
+        $uuid = Str::uuid();
+        $check = DB::table('communication_logs')->where('uuid', $uuid)->count();
+
+        if ($check == 0)
+        {
+            return $uuid;
+        }
+        else
+        {
+            return $this->makeUUID();
+        }
     }
 
     public function viewCommunicationLog($uuid)
