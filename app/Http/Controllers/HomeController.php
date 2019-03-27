@@ -29,8 +29,8 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $logs = $user->communicationLogs()->orderBy('created_at', 'desc')->take(50)->get();
-        $count = $user->communicationLogs()->count();
+        $logs = $user->communicationLogs()->orderBy('created_at', 'desc')->paginate(50);
+        $count = $logs->total() - $logs->perPage() * ($logs->currentPage() - 1);
 
         return view('home', compact('logs', 'count'));
     }
