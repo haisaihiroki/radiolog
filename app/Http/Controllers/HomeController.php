@@ -30,7 +30,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $logs = $user->communicationLogs()->orderBy('created_at', 'desc')->take(50)->get();
-        $count = count($logs);
+        $count = $user->communicationLogs()->count();
 
         return view('home', compact('logs', 'count'));
     }
