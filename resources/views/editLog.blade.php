@@ -57,22 +57,22 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row my-color">
                         <div class="form-group col-md-5">
                             <label for="MyQTH">My QTH</label>
                             <input type="text" class="form-control" id="MyQTH" name="MyQTH" placeholder="Kohoku-ku, Yokohama-shi, Kanagawa, JP" value="{{ old('MyQTH', $log->my_qth) }}">
                         </div>
-                        <div class="form-group col-md-5">
-                            <label for="HisQTH">His QTH</label>
-                            <input type="text" class="form-control" id="HisQTH" name="HisQTH" placeholder="Shibuya-ku, Tokyo, JP" value="{{ old('HisQTH', $log->his_qth) }}">
+                        <div class="form-group col-md-2">
+                            <label for="MyPower">My Power (W)</label>
+                            <input type="number" class="form-control" id="MyPower" step="0.1" name="MyPower" placeholder="5" value="{{ old('MyPower', $log->my_power) }}">
                         </div>
+
                     </div>
 
-                    <div class="row">
+                    <div class="row my-color">
                         <div class="form-group col-md-4">
                             <label for="MyR">My Readability</label>
                             <select class="form-control" id="MyR" name="MyR">
-                                <option value="">-</option>
                                 <option value="5" @if(old('MyR', $log->my_r)=="5") selected @endif>5 : 完全に了解できる</option>
                                 <option value="4" @if(old('MyR', $log->my_r)=="4") selected @endif>4 : 実用上困難なく了解できる</option>
                                 <option value="3" @if(old('MyR', $log->my_r)=="3") selected @endif>3 : かなり困難だが了解できる</option>
@@ -111,11 +111,20 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row his-color">
+                        <div class="form-group col-md-5">
+                            <label for="HisQTH">His QTH</label>
+                            <input type="text" class="form-control" id="HisQTH" name="HisQTH" placeholder="Shibuya-ku, Tokyo, JP" value="{{ old('HisQTH', $log->his_qth) }}">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="HisPower">His Power (W)</label>
+                            <input type="number" class="form-control" id="HisPower" step="0.1" name="HisPower" placeholder="0.1" value="{{ old('HisPower', $log->his_power) }}">
+                        </div>
+                    </div>
+                    <div class="row his-color">
                         <div class="form-group col-md-4">
                             <label for="HisR">His Readability</label>
                             <select class="form-control" id="HisR" name="HisR">
-                                <option value="">-</option>
                                 <option value="5" @if(old('HisR', $log->his_r)=="5") selected @endif>5 : 完全に了解できる</option>
                                 <option value="4" @if(old('HisR', $log->his_r)=="4") selected @endif>4 : 実用上困難なく了解できる</option>
                                 <option value="3" @if(old('HisR', $log->his_r)=="3") selected @endif>3 : かなり困難だが了解できる</option>
@@ -152,16 +161,6 @@
                                 <option value="2" @if(old('HisT', $log->his_t)=="2") selected @endif>2 : 大変あらい交流音で、楽音の感じは少しもしない音調</option>
                                 <option value="1" @if(old('HisT', $log->his_t)=="1") selected @endif>1 : 極めてあらい音</option>
                             </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-2">
-                            <label for="MyPower">My Power (W)</label>
-                            <input type="number" class="form-control" id="MyPower" step="0.1" name="MyPower" placeholder="5" value="{{ old('MyPower', $log->my_power) }}">
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="HisPower">His Power (W)</label>
-                            <input type="number" class="form-control" id="HisPower" step="0.1" name="HisPower" placeholder="0.1" value="{{ old('HisPower', $log->his_power) }}">
                         </div>
                     </div>
                     <div class="form-group">
