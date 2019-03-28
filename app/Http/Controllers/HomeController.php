@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $logs = $user->communicationLogs()->orderBy('created_at', 'desc')->paginate(50);
+        $logs = $user->communicationLogs()->orderBy('created_at', 'desc')->paginate(20);
         $count = $logs->total() - $logs->perPage() * ($logs->currentPage() - 1);
 
         return view('home', compact('logs', 'count'));
