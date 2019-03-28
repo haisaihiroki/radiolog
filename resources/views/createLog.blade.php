@@ -82,7 +82,6 @@
                     <div class="form-group col-md-4">
                         <label for="MyS">My Signal Strength</label>
                         <select class="form-control" id="MyS" name="MyS">
-                            <option value="">-</option>
                             <option value="9" @if(old('MyS')=="9") selected @endif>9 : きわめて強い信号</option>
                             <option value="8" @if(old('MyS')=="8") selected @endif>8 : 強い信号</option>
                             <option value="7" @if(old('MyS')=="7") selected @endif>7 : かなり強い信号</option>
@@ -134,7 +133,6 @@
                     <div class="form-group col-md-4">
                         <label for="HisS">His Signal Strength</label>
                         <select class="form-control" id="HisS" name="HisS">
-                            <option value="">-</option>
                             <option value="9" @if(old('HisS')=="9") selected @endif>9 : きわめて強い信号</option>
                             <option value="8" @if(old('HisS')=="8") selected @endif>8 : 強い信号</option>
                             <option value="7" @if(old('HisS')=="7") selected @endif>7 : かなり強い信号</option>
