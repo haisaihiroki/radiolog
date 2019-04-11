@@ -4,8 +4,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <div class="float-left center">Log</div>
-            <a href="{{ route('createLog') }}" class="btn btn-outline-primary float-right" role="button" aria-pressed="true">Create Log</a>
+            <div class="center">Log</div>
         </div>
 
         <div class="card-body">
@@ -15,6 +14,16 @@
 
                 </li>
             </ul>
+            <form method="get", action="{{ route('home') }}">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" name="HisCallSign" placeholder="Input the CallSign" value="{{ $hisCallSign }}">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input type="submit" class="btn btn-primary" value="Search & Create">
+                    </div>
+                </div>
+            </form>
             <div class="table-responsive">
                 <table class="table">
                     <thead>

@@ -26,13 +26,31 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
-        $logs = $user->communicationLogs()->orderBy('created_at', 'desc')->paginate(20);
+        $hisCallSign = "";
+        if (isset($request->HisCallSign))
+        {
+            $hisCallSign = strtoupper($request->HisCallSign);
+            $logs = $user->communicationLogs()->where('his_callsign', $hisCallSign)->orderBy('created_at', 'desc')->paginate(5);
+            $log_latest = $user->communicationLogs()->where('his_callsign', $hisCallSign)->orderBy('created_at', 'desc')->first();
+            $count = $logs->total() - $logs->perPage() * ($logs->currentPage() - 1);
+            if (!isset($log_latest))
+            {
+                $log_latest = new CommunicationLog();
+            }
+
+            return view('searchAndCreateLog', compact('logs', 'count', 'hisCallSign', 'log_latest'));
+        }
+        else
+        {
+            $logs = $user->communicationLogs()->orderBy('created_at', 'desc')->paginate(20);
+        }
+
         $count = $logs->total() - $logs->perPage() * ($logs->currentPage() - 1);
 
-        return view('home', compact('logs', 'count'));
+        return view('home', compact('logs', 'count', 'hisCallSign'));
     }
 
     public function createLog()
