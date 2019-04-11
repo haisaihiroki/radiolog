@@ -53,11 +53,6 @@ class HomeController extends Controller
         return view('home', compact('logs', 'count', 'hisCallSign'));
     }
 
-    public function createLog()
-    {
-        return view('createLog');
-    }
-
     public function saveCreateLog(Request $request)
     {
         $validatedData = $request->validate([

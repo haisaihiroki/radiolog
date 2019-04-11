@@ -20,7 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home',                 'HomeController@index')->name('home');
-Route::get('/home/create',          'HomeController@createLog')->name('createLog');
 Route::post('/home/create/save',    'HomeController@saveCreateLog')->name('saveLog');
 Route::get('/home/{uuid}',          'HomeController@viewCommunicationLog')->name('viewLog');
 Route::get('/home/{uuid}/edit',     'HomeController@editCommunicationLog')->name('editLog');
