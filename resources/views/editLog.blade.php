@@ -43,7 +43,7 @@
                     <div class="row">
                         <div class="form-group col-xs-8 col-sm-5 col-md-4">
                             <label for="Band">Band (MHz)</label>
-                            <input type="number" class="form-control" id="Band" step="0.001" name="Band" placeholder="433.000" value="{{ old('Band', $log->band) }}" required>
+                            <input type="number" class="form-control" id="Band" step="0.000001" name="Band" placeholder="433.000" value="{{ old('Band', $log->band) }}" required>
                         </div>
                         <div class="form-group col-xs-6 col-sm-4 col-md-3">
                             <label for="Mode">Mode</label>
