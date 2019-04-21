@@ -39,6 +39,7 @@ class HomeController extends Controller
             if (!isset($log_latest))
             {
                 $log_latest = new CommunicationLog();
+                $log_latest->his_callsign = $hisCallSign;
             }
 
             return view('searchAndCreateLog', compact('logs', 'count', 'hisCallSign', 'log_latest'));
