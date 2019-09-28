@@ -103,12 +103,9 @@
                         <label for="Mode">Mode</label>
                         <select class="form-control" id="Mode" name="Mode" required>
                             <option value="">-</option>
-                            <option value="1" @if(old('Mode')=="1") selected @endif>FT8</option>
-                            <option value="2" @if(old('Mode')=="2") selected @endif>JT4</option>
-                            <option value="3" @if(old('Mode')=="3") selected @endif>JT9</option>
-                            <option value="4" @if(old('Mode')=="4") selected @endif>JT9+JT65</option>
-                            <option value="5" @if(old('Mode')=="5") selected @endif>JT65</option>
-                            <option value="5" @if(old('Mode')=="5") selected @endif>QRA64</option>
+                            @foreach ($modes as $mode)
+                                <option value="{{ $mode->id }}" @if(old('Mode')==$mode->id ) selected @endif>{{ $mode->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

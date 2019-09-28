@@ -48,12 +48,9 @@
                         <div class="form-group col-xs-6 col-sm-4 col-md-3">
                             <label for="Mode">Mode</label>
                             <select class="form-control" id="Mode" name="Mode" required>
-                                <option value="">-</option>
-                                <option value="1" @if(old('Mode', $log->mode_id)=="1") selected @endif>AM</option>
-                                <option value="2" @if(old('Mode', $log->mode_id)=="2") selected @endif>FM</option>
-                                <option value="3" @if(old('Mode', $log->mode_id)=="3") selected @endif>SSB</option>
-                                <option value="4" @if(old('Mode', $log->mode_id)=="4") selected @endif>CW</option>
-                                <option value="5" @if(old('Mode', $log->mode_id)=="5") selected @endif>DV</option>
+                            @foreach ($modes as $mode)
+                                <option value="{{ $mode->id }}" @if(old('Mode', $log->mode_id)==$mode->id ) selected @endif>{{ $mode->name }}</option>
+                            @endforeach
                             </select>
                         </div>
                     </div>
