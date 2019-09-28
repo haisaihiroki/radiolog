@@ -29,7 +29,7 @@
                 </div>
                 <div class="form-group col-md-5">
                     <h5>Mode</h5>
-                    <p>{{ $log->mode() }}</p>
+                    <p>{{ $log->mode->name }}</p>
                 </div>
             </div>
             <div class="row">
