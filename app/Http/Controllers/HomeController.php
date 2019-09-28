@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\CommunicationLog;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use App\Mode;
 
 
 class HomeController extends Controller
@@ -36,13 +37,14 @@ class HomeController extends Controller
             $logs = $user->communicationLogs()->where('his_callsign', $hisCallSign)->orderBy('created_at', 'desc')->paginate(5);
             $log_latest = $user->communicationLogs()->where('his_callsign', $hisCallSign)->orderBy('created_at', 'desc')->first();
             $count = $logs->total() - $logs->perPage() * ($logs->currentPage() - 1);
+            $modes = Mode::getAnalogList();
             if (!isset($log_latest))
             {
                 $log_latest = new CommunicationLog();
                 $log_latest->his_callsign = $hisCallSign;
             }
 
-            return view('searchAndCreateLog', compact('logs', 'count', 'hisCallSign', 'log_latest'));
+            return view('searchAndCreateLog', compact('logs', 'count', 'hisCallSign', 'log_latest', 'modes'));
         }
         else
         {
@@ -114,8 +116,9 @@ class HomeController extends Controller
         $user = Auth::user();
         $log = $user->communicationLogs()->where('uuid', $uuid)->firstOrFail();
         $dateTime = \DateTime::createFromFormat("Y-m-d H:i:s", $log->time);
+        $modes = Mode::getAnalogList();
 
-        return view('editLog', compact('log', 'uuid', 'dateTime'));
+        return view('editLog', compact('log', 'uuid', 'dateTime', 'modes'));
     }
 
     public function saveCommunicationLog(Request $request)
