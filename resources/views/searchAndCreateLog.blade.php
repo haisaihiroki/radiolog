@@ -45,7 +45,7 @@
                             <td>{{ $log->my_RST() }}</td>
                             <td>{{ $log->his_RST() }}</td>
                             <td>{{ $log->band }}</td>
-                            <td>{{ $log->mode() }}</td>
+                            <td>{{ $log->mode->name }}</td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -103,11 +103,12 @@
                         <label for="Mode">Mode</label>
                         <select class="form-control" id="Mode" name="Mode" required>
                             <option value="">-</option>
-                            <option value="1" @if(old('Mode')=="1") selected @endif>AM</option>
-                            <option value="2" @if(old('Mode')=="2") selected @endif>FM</option>
-                            <option value="3" @if(old('Mode')=="3") selected @endif>SSB</option>
-                            <option value="4" @if(old('Mode')=="4") selected @endif>CW</option>
-                            <option value="5" @if(old('Mode')=="5") selected @endif>DV</option>
+                            <option value="1" @if(old('Mode')=="1") selected @endif>FT8</option>
+                            <option value="2" @if(old('Mode')=="2") selected @endif>JT4</option>
+                            <option value="3" @if(old('Mode')=="3") selected @endif>JT9</option>
+                            <option value="4" @if(old('Mode')=="4") selected @endif>JT9+JT65</option>
+                            <option value="5" @if(old('Mode')=="5") selected @endif>JT65</option>
+                            <option value="5" @if(old('Mode')=="5") selected @endif>QRA64</option>
                         </select>
                     </div>
                 </div>
