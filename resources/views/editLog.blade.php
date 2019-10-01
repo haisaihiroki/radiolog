@@ -70,40 +70,26 @@
                         <div class="form-group col-md-4">
                             <label for="MyR">My Readability</label>
                             <select class="form-control" id="MyR" name="MyR">
-                                <option value="5" @if(old('MyR', $log->my_r)=="5") selected @endif>5 : 完全に了解できる</option>
-                                <option value="4" @if(old('MyR', $log->my_r)=="4") selected @endif>4 : 実用上困難なく了解できる</option>
-                                <option value="3" @if(old('MyR', $log->my_r)=="3") selected @endif>3 : かなり困難だが了解できる</option>
-                                <option value="2" @if(old('MyR', $log->my_r)=="2") selected @endif>2 : かろうじて了解できる</option>
-                                <option value="1" @if(old('MyR', $log->my_r)=="1") selected @endif>1 : 了解できない</option>
+                                @foreach ($readabilities as $readability)
+                                    <option value="{{ $readability->readability }}" @if(old('MyR', $log->my_r)==$readability->readability) selected @endif>{{ $readability->readability }} : {{ $readability->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="MyS">My Signal Strength</label>
                             <select class="form-control" id="MyS" name="MyS">
-                                <option value="9" @if(old('MyS', $log->my_s)=="9") selected @endif>9 : きわめて強い信号</option>
-                                <option value="8" @if(old('MyS', $log->my_s)=="8") selected @endif>8 : 強い信号</option>
-                                <option value="7" @if(old('MyS', $log->my_s)=="7") selected @endif>7 : かなり強い信号</option>
-                                <option value="6" @if(old('MyS', $log->my_s)=="6") selected @endif>6 : 適度な強さの信号</option>
-                                <option value="5" @if(old('MyS', $log->my_s)=="5") selected @endif>5 : かなり適度な強さの信号</option>
-                                <option value="4" @if(old('MyS', $log->my_s)=="4") selected @endif>4 : 弱いが受信容易な信号</option>
-                                <option value="3" @if(old('MyS', $log->my_s)=="3") selected @endif>3 : 弱い信号</option>
-                                <option value="2" @if(old('MyS', $log->my_s)=="2") selected @endif>2 : 大変弱い信号</option>
-                                <option value="1" @if(old('MyS', $log->my_s)=="1") selected @endif>1 : 微弱でかろうじて受信できる信号</option>
+                                @foreach ($strengths as $strength)
+                                    <option value="{{ $strength->strength }}" @if(old('MyS', $log->my_s)==$strength->strength) selected @endif>{{ $strength->strength}} : {{ $strength->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="MyT">My Tone</label>
                             <select class="form-control" id="MyT" name="MyT">
                                 <option value="">-</option>
-                                <option value="9" @if(old('MyT', $log->my_t)=="9") selected @endif>9 : 完全な直流音</option>
-                                <option value="8" @if(old('MyT', $log->my_t)=="8") selected @endif>8 : よい直流音色だが、ほんのわずかにリプルが感じられる</option>
-                                <option value="7" @if(old('MyT', $log->my_t)=="7") selected @endif>7 : 直流に近い音で、少しリプルが残っている</option>
-                                <option value="6" @if(old('MyT', $log->my_t)=="6") selected @endif>6 : 変調された音、すこしビューッという音を伴っている</option>
-                                <option value="5" @if(old('MyT', $log->my_t)=="5") selected @endif>5 : 楽音的で変調された音色</option>
-                                <option value="4" @if(old('MyT', $log->my_t)=="4") selected @endif>4 : いくらかあらい交流音で、かなり楽音性に近い音</option>
-                                <option value="3" @if(old('MyT', $log->my_t)=="3") selected @endif>3 : あらくて低い調子の交流音でいくぶん楽音に近い音調</option>
-                                <option value="2" @if(old('MyT', $log->my_t)=="2") selected @endif>2 : 大変あらい交流音で、楽音の感じは少しもしない音調</option>
-                                <option value="1" @if(old('MyT', $log->my_t)=="1") selected @endif>1 : 極めてあらい音</option>
+                                @foreach ($tones as $tone)
+                                    <option value="{{ $tone->tone }}" @if(old('MyT', $log->my_t)==$tone->tone) selected @endif>{{ $tone->tone }} : {{ $tone->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -121,40 +107,26 @@
                         <div class="form-group col-md-4">
                             <label for="HisR">His Readability</label>
                             <select class="form-control" id="HisR" name="HisR">
-                                <option value="5" @if(old('HisR', $log->his_r)=="5") selected @endif>5 : 完全に了解できる</option>
-                                <option value="4" @if(old('HisR', $log->his_r)=="4") selected @endif>4 : 実用上困難なく了解できる</option>
-                                <option value="3" @if(old('HisR', $log->his_r)=="3") selected @endif>3 : かなり困難だが了解できる</option>
-                                <option value="2" @if(old('HisR', $log->his_r)=="2") selected @endif>2 : かろうじて了解できる</option>
-                                <option value="1" @if(old('HisR', $log->his_r)=="1") selected @endif>1 : 了解できない</option>
+                                @foreach ($readabilities as $readability)
+                                    <option value="{{ $readability->readability }}" @if(old('HisR', $log->his_r)==$readability->readability) selected @endif>{{ $readability->readability }} : {{ $readability->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="HisS">His Signal Strength</label>
                             <select class="form-control" id="HisS" name="HisS">
-                                <option value="9" @if(old('HisS', $log->his_s)=="9") selected @endif>9 : きわめて強い信号</option>
-                                <option value="8" @if(old('HisS', $log->his_s)=="8") selected @endif>8 : 強い信号</option>
-                                <option value="7" @if(old('HisS', $log->his_s)=="7") selected @endif>7 : かなり強い信号</option>
-                                <option value="6" @if(old('HisS', $log->his_s)=="6") selected @endif>6 : 適度な強さの信号</option>
-                                <option value="5" @if(old('HisS', $log->his_s)=="5") selected @endif>5 : かなり適度な強さの信号</option>
-                                <option value="4" @if(old('HisS', $log->his_s)=="4") selected @endif>4 : 弱いが受信容易な信号</option>
-                                <option value="3" @if(old('HisS', $log->his_s)=="3") selected @endif>3 : 弱い信号</option>
-                                <option value="2" @if(old('HisS', $log->his_s)=="2") selected @endif>2 : 大変弱い信号</option>
-                                <option value="1" @if(old('HisS', $log->his_s)=="1") selected @endif>1 : 微弱でかろうじて受信できる信号</option>
+                                @foreach ($strengths as $strength)
+                                    <option value="{{ $strength->strength }}" @if(old('HisS', $log->his_s)==$strength->strength) selected @endif>{{ $strength->strength}} : {{ $strength->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="HisT">His Tone</label>
                             <select class="form-control" id="HisT" name="HisT">
                                 <option value="">-</option>
-                                <option value="9" @if(old('HisT', $log->his_t)=="9") selected @endif>9 : 完全な直流音</option>
-                                <option value="8" @if(old('HisT', $log->his_t)=="8") selected @endif>8 : よい直流音色だが、ほんのわずかにリプルが感じられる</option>
-                                <option value="7" @if(old('HisT', $log->his_t)=="7") selected @endif>7 : 直流に近い音で、少しリプルが残っている</option>
-                                <option value="6" @if(old('HisT', $log->his_t)=="6") selected @endif>6 : 変調された音、すこしビューッという音を伴っている</option>
-                                <option value="5" @if(old('HisT', $log->his_t)=="5") selected @endif>5 : 楽音的で変調された音色</option>
-                                <option value="4" @if(old('HisT', $log->his_t)=="4") selected @endif>4 : いくらかあらい交流音で、かなり楽音性に近い音</option>
-                                <option value="3" @if(old('HisT', $log->his_t)=="3") selected @endif>3 : あらくて低い調子の交流音でいくぶん楽音に近い音調</option>
-                                <option value="2" @if(old('HisT', $log->his_t)=="2") selected @endif>2 : 大変あらい交流音で、楽音の感じは少しもしない音調</option>
-                                <option value="1" @if(old('HisT', $log->his_t)=="1") selected @endif>1 : 極めてあらい音</option>
+                                @foreach ($tones as $tone)
+                                    <option value="{{ $tone->tone }}" @if(old('HisT', $log->his_t)==$tone->tone) selected @endif>{{ $tone->tone }} : {{ $tone->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

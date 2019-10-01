@@ -8,6 +8,9 @@ use App\CommunicationLog;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Mode;
+use App\Readability;
+use App\SignalStrength;
+use App\Tone;
 
 
 class HomeController extends Controller
@@ -38,13 +41,16 @@ class HomeController extends Controller
             $log_latest = $user->communicationLogs()->where('his_callsign', $hisCallSign)->orderBy('created_at', 'desc')->first();
             $count = $logs->total() - $logs->perPage() * ($logs->currentPage() - 1);
             $modes = Mode::getAnalogList();
+            $readabilities = Readability::orderBy('readability', 'desc')->get();
+            $strengths = SignalStrength::orderBy('strength', 'desc')->get();
+            $tones = Tone::orderBy('tone', 'desc')->get();
             if (!isset($log_latest))
             {
                 $log_latest = new CommunicationLog();
                 $log_latest->his_callsign = $hisCallSign;
             }
 
-            return view('searchAndCreateLog', compact('logs', 'count', 'hisCallSign', 'log_latest', 'modes'));
+            return view('searchAndCreateLog', compact('logs', 'count', 'hisCallSign', 'log_latest', 'modes', 'readabilities', 'strengths', 'tones'));
         }
         else
         {
@@ -117,8 +123,11 @@ class HomeController extends Controller
         $log = $user->communicationLogs()->where('uuid', $uuid)->firstOrFail();
         $dateTime = \DateTime::createFromFormat("Y-m-d H:i:s", $log->time);
         $modes = Mode::getAnalogList();
+        $readabilities = Readability::orderBy('readability', 'desc')->get();
+        $strengths = SignalStrength::orderBy('strength', 'desc')->get();
+        $tones = Tone::orderBy('tone', 'desc')->get();
 
-        return view('editLog', compact('log', 'uuid', 'dateTime', 'modes'));
+        return view('editLog', compact('log', 'uuid', 'dateTime', 'modes', 'readabilities', 'strengths', 'tones'));
     }
 
     public function saveCommunicationLog(Request $request)
