@@ -51,7 +51,7 @@ class HomeController extends Controller
                 $log_latest->his_callsign = $hisCallSign;
             }
 
-            return view('searchAndCreateLog', compact('logs', 'count', 'hisCallSign', 'log_latest', 'modes', 'readabilities', 'strengths', 'tones'));
+            return view('analog/searchAndCreateLog', compact('logs', 'count', 'hisCallSign', 'log_latest', 'modes', 'readabilities', 'strengths', 'tones'));
         }
         else
         {
@@ -61,7 +61,7 @@ class HomeController extends Controller
 
         $count = $logs->total() - $logs->perPage() * ($logs->currentPage() - 1);
 
-        return view('home', compact('logs', 'count', 'hisCallSign'));
+        return view('analog/home', compact('logs', 'count', 'hisCallSign'));
     }
 
     public function saveCreateLog(Request $request)
@@ -129,7 +129,7 @@ class HomeController extends Controller
         $strengths = SignalStrength::orderBy('strength', 'desc')->get();
         $tones = Tone::orderBy('tone', 'desc')->get();
 
-        return view('editLog', compact('log', 'uuid', 'dateTime', 'modes', 'readabilities', 'strengths', 'tones'));
+        return view('analog/editLog', compact('log', 'uuid', 'dateTime', 'modes', 'readabilities', 'strengths', 'tones'));
     }
 
     public function saveCommunicationLog(Request $request)
@@ -207,6 +207,6 @@ class HomeController extends Controller
         $user = Auth::user();
         $log = $user->communicationLogs()->where('uuid', $uuid)->firstOrFail();
 
-        return view('viewLog', compact('log', 'uuid'));
+        return view('analog/viewLog', compact('log', 'uuid'));
     }
 }
