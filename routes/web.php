@@ -24,3 +24,8 @@ Route::post('/home/create/save',    'HomeController@saveCreateLog')->name('saveL
 Route::get('/home/{uuid}',          'HomeController@viewCommunicationLog')->name('viewLog');
 Route::get('/home/{uuid}/edit',     'HomeController@editCommunicationLog')->name('editLog');
 Route::post('/home/{uuid}/save',    'HomeController@saveCommunicationLog')->name('saveEditLog');
+Route::get('/digital/home',                 'HomeDigitalController@index')->name('home-digital');
+Route::post('/digital/home/create/save',    'HomeDigitalController@saveCreateLog')->name('saveLog-digital');
+Route::get('/digital/home/{uuid}',          'HomeDigitalController@viewCommunicationLog')->name('viewLog-digital');
+Route::get('/digital/home/{uuid}/edit',     'HomeDigitalController@editCommunicationLog')->name('editLog-digital');
+Route::post('/digital/home/{uuid}/save',    'HomeDigitalController@saveCommunicationLog')->name('saveEditLog-digital');
