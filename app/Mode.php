@@ -17,4 +17,14 @@ class Mode extends Model
     {
         return Mode::where('is_digital', true)->orderBy('created_at', 'asc')->get();
     }
+
+    public static function getAnalogListID()
+    {
+        return Mode::where('is_digital', false)->pluck('id');
+    }
+
+    public static function getDigitalListID()
+    {
+        return Mode::where('is_digital', true)->pluck('id');
+    }
 }
