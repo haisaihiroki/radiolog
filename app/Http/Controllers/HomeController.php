@@ -37,8 +37,9 @@ class HomeController extends Controller
         if (isset($request->HisCallSign))
         {
             $hisCallSign = strtoupper($request->HisCallSign);
-            $logs = $user->communicationLogs()->where('his_callsign', $hisCallSign)->orderBy('created_at', 'desc')->paginate(5);
-            $log_latest = $user->communicationLogs()->where('his_callsign', $hisCallSign)->orderBy('created_at', 'desc')->first();
+            $modeIDs = Mode::getAnalogListID();
+            $logs = $user->communicationLogs()->where('his_callsign', $hisCallSign)->whereIn('mode_id', $modeIDs)->orderBy('created_at', 'desc')->paginate(5);
+            $log_latest = $user->communicationLogs()->where('his_callsign', $hisCallSign)->whereIn('mode_id', $modeIDs)->orderBy('created_at', 'desc')->first();
             $count = $logs->total() - $logs->perPage() * ($logs->currentPage() - 1);
             $modes = Mode::getAnalogList();
             $readabilities = Readability::orderBy('readability', 'desc')->get();
@@ -54,7 +55,8 @@ class HomeController extends Controller
         }
         else
         {
-            $logs = $user->communicationLogs()->orderBy('created_at', 'desc')->paginate(20);
+            $modeIDs = Mode::getAnalogListID();
+            $logs = $user->communicationLogs()->whereIn('mode_id', $modeIDs)->orderBy('created_at', 'desc')->paginate(20);
         }
 
         $count = $logs->total() - $logs->perPage() * ($logs->currentPage() - 1);
