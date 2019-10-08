@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DateTime;
+use DateTimeZone;
 
 class CommunicationLog extends Model
 {
@@ -74,5 +76,12 @@ class CommunicationLog extends Model
         else {
             return $rs . $this->his_Tone()->first()->tone;
         }
+    }
+
+    public function time_utc()
+    {
+        $t = new DateTime($this->time);
+        $t->setTimeZone( new DateTimeZone('UTC'));
+        return $t->format("Y-m-d H:i:s");
     }
 }
