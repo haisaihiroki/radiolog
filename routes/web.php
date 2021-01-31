@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomeDigitalController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,13 +23,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home',                 'HomeController@index')->name('home');
-Route::post('/home/create/save',    'HomeController@saveCreateLog')->name('saveLog');
-Route::get('/home/{uuid}',          'HomeController@viewCommunicationLog')->name('viewLog');
-Route::get('/home/{uuid}/edit',     'HomeController@editCommunicationLog')->name('editLog');
-Route::post('/home/{uuid}/save',    'HomeController@saveCommunicationLog')->name('saveEditLog');
-Route::get('/digital/home',                 'HomeDigitalController@index')->name('home-digital');
-Route::post('/digital/home/create/save',    'HomeDigitalController@saveCreateLog')->name('saveLog-digital');
-Route::get('/digital/home/{uuid}',          'HomeDigitalController@viewCommunicationLog')->name('viewLog-digital');
-Route::get('/digital/home/{uuid}/edit',     'HomeDigitalController@editCommunicationLog')->name('editLog-digital');
-Route::post('/digital/home/{uuid}/save',    'HomeDigitalController@saveCommunicationLog')->name('saveEditLog-digital');
+Route::get('/home',                 [HomeController::class, 'index'])->name('home');
+Route::post('/home/create/save',    [HomeController::class, 'saveCreateLog'])->name('saveLog');
+Route::get('/home/{uuid}',          [HomeController::class, 'viewCommunicationLog'])->name('viewLog');
+Route::get('/home/{uuid}/edit',     [HomeController::class, 'editCommunicationLog'])->name('editLog');
+Route::post('/home/{uuid}/save',    [HomeController::class, 'saveCommunicationLog'])->name('saveEditLog');
+Route::get('/digital/home',                 [HomeDigitalController::class, 'index'])->name('home-digital');
+Route::post('/digital/home/create/save',    [HomeDigitalController::class, 'saveCreateLog'])->name('saveLog-digital');
+Route::get('/digital/home/{uuid}',          [HomeDigitalController::class, 'viewCommunicationLog'])->name('viewLog-digital');
+Route::get('/digital/home/{uuid}/edit',     [HomeDigitalController::class, 'editCommunicationLog'])->name('editLog-digital');
+Route::post('/digital/home/{uuid}/save',    [HomeDigitalController::class, 'saveCommunicationLog'])->name('saveEditLog-digital');
