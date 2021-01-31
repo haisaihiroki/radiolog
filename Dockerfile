@@ -3,7 +3,10 @@ RUN apt-get update && \
     apt-get install -y git \
         unzip \
         libzip-dev && \
-    docker-php-ext-install zip
+    docker-php-ext-install \
+        zip \
+        bcmath \
+        pdo_mysql
 RUN curl -O https://getcomposer.org/composer-stable.phar && mv composer-stable.phar /usr/local/bin/composer && chmod +x /usr/local/bin/composer
 ADD . /radiolog
 RUN chown -R www-data:www-data /radiolog
