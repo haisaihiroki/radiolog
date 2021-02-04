@@ -6,3 +6,12 @@ PC/スマホで気軽に簡単に交信Logが記録できるようにをモッ�
 * 交信Logの記録
 * 交信Logの一覧表示
 * 交信Logの更新
+
+## RUN
+Build and run your computer
+```
+docker build . -t radiolog
+docker run  -p 8080:80 -t radiolog 
+```
+Access your browser http://localhost:8080
+
