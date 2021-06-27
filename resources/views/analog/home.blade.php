@@ -61,7 +61,7 @@
             @if(count($logs) == 0)
                 <p>Not recodes.</p>
             @endif
-            {{ $logs->onEachSide(5)->links() }}
+            {{ $logs->links() }}
         </div>
     </div>
 </div>
