@@ -57,11 +57,11 @@
                     @endforeach
                     </tbody>
                 </table>
-                @if(count($logs) == 0)
-                    <p>Not recodes.</p>
-                @endif
-                {{ $logs->links() }}
             </div>
+            @if(count($logs) == 0)
+                <p>Not recodes.</p>
+            @endif
+            {{ $logs->links() }}
         </div>
     </div>
 </div>
