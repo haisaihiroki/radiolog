@@ -39,7 +39,7 @@
                             <td><a href="{{ route('viewLog', $log->uuid) }}">{{ $count - $key }}</a></td>
                             <td>{{ $log->his_callsign }}</td>
                             <td>{{ $log->his_name }}</td>
-                            <td>{{ $log->time }}</td>
+                            <td>{{ $log->time }} <br /> <span class="time-utc">UTC: {{ $log->time_utc() }}</span></td>
                             <td>{{ $log->my_qth }}</td>
                             <td>{{ $log->his_qth }}</td>
                             <td>{{ $log->my_RST() }}</td>
