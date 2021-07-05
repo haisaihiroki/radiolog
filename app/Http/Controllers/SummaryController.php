@@ -59,6 +59,8 @@ class SummaryController extends Controller
         #band[1260.000, 1300.000]
         $band_1200 = $user->communicationLogs()->where('band', 'regexp','12[6789]\d\.\d*')->get();
 
-        return view('summary', compact('band_160', 'band_80', 'band_40', 'band_30', 'band_20', 'band_17', 'band_15', 'band_12', 'band_10', 'band_6', 'band_2', 'band_430', 'band_1200'));
+        $total = $user->communicationLogs()->count();
+
+        return view('summary', compact('band_160', 'band_80', 'band_40', 'band_30', 'band_20', 'band_17', 'band_15', 'band_12', 'band_10', 'band_6', 'band_2', 'band_430', 'band_1200', 'total'));
     }
 }

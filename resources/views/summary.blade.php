@@ -26,6 +26,7 @@
                         <th scope="col">2m</th>
                         <th scope="col">70cm</th>
                         <th scope="col">23cm</th>
+                        <th scope="col">Total</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -44,6 +45,7 @@
                             <td>{{ count($band_2) }}</td>
                             <td>{{ count($band_430) }}</td>
                             <td>{{ count($band_1200) }}</td>
+                            <td>{{ $total }}</td>
                         </tr>
                     </tbody>
                 </table>
