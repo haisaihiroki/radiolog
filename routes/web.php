@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeDigitalController;
-
+use App\Http\Controllers\SummaryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,3 +33,4 @@ Route::post('/digital/home/create/save',    [HomeDigitalController::class, 'save
 Route::get('/digital/home/{uuid}',          [HomeDigitalController::class, 'viewCommunicationLog'])->name('viewLog-digital');
 Route::get('/digital/home/{uuid}/edit',     [HomeDigitalController::class, 'editCommunicationLog'])->name('editLog-digital');
 Route::post('/digital/home/{uuid}/save',    [HomeDigitalController::class, 'saveCommunicationLog'])->name('saveEditLog-digital');
+Route::get('/summary',              [SummaryController::class, 'index'])->name('summary');
