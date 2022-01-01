@@ -16,7 +16,7 @@ docker run -p 8080:80 -t radiolog
 
 (Debug時はこんな感じもあり)
 ```
-docker run  -p 8080:80 -v `pwd`:/radiolog -t radiolog
+docker run  -p 8080:80 -v `$pwd`:/radiolog -t radiolog
 ```
 Access your browser http://localhost:8080
 
