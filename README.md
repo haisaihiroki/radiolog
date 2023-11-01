@@ -10,13 +10,13 @@ PC/スマホで気軽に簡単に交信Logが記録できるようにをモッ�
 ## RUN
 Build and run your computer
 ```
-docker build . -t radiolog
-docker run -p 8080:80 -t radiolog
+docker build . -t haisaihiroki/radiolog
+docker run -p 8080:80 -t haisaihiroki/radiolog
 ```
 
 (Debug時はこんな感じもあり)
 ```
-docker run  -p 8080:80 -v `pwd`:/radiolog -t radiolog
+docker run  -p 8080:80 -v `pwd`:/radiolog -t haisaihiroki/radiolog
 ```
 Access your browser http://localhost:8080
 

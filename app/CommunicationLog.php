@@ -12,6 +12,10 @@ class CommunicationLog extends Model
         'his_callsign', 'his_name', 'time', 'my_qth', 'his_qth', 'band', 'is_public', 'uuid', 'my_power', 'his_power'
     ];
 
+    protected $casts = [
+        'band' => 'decimal:3',
+    ];
+
     public  function user()
     {
         return $this->belongsTo('App\User');
