@@ -11,7 +11,7 @@ RUN curl -O https://getcomposer.org/composer-stable.phar && mv composer-stable.p
 ADD . /radiolog
 RUN chown -R www-data:www-data /radiolog
 WORKDIR /radiolog
-RUN composer global require kylekatarnls/update-helper \
+RUN composer require kylekatarnls/update-helper \
         php-parallel-lint/php-console-color && \
     composer install
 
