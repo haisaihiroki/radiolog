@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             ReadabilitiesTableSeeder::class,
             SignalStrengthsTableSeeder::class,
             TonesTableSeeder::class,
+            BandsTableSeeder::class,
         ]);
     }
 }
