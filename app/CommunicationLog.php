@@ -88,4 +88,10 @@ class CommunicationLog extends Model
         $t->setTimeZone( new DateTimeZone('UTC'));
         return $t->format("Y-m-d H:i:s");
     }
+
+    public function getBand()
+    {
+        $band = new Band();
+        return $band->getBand($this->band);
+    }
 }
