@@ -21,9 +21,7 @@ return new class extends Migration
         $logs = CommunicationLog::all();
         foreach ($logs as $log)
         {
-            $band = new Band();
-            $tmp = $band->getBand($log->band);
-            $log->band_id = $tmp->id;
+            $log->band_id = Band::getBandId($log->band);
             $log->save();
         }
     }
