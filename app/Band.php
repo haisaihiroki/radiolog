@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Band extends Model
 {
-    public function getBand($freq)
+    public static function getBandId($freq)
     {
         $bands = Band::all();
 
@@ -14,7 +14,7 @@ class Band extends Model
         {
             if ($val->lowwer_freq < $freq && $freq < $val->upper_freq)
             {
-                return $val;
+                return $val->id;
             }
         }
         return NULL;
