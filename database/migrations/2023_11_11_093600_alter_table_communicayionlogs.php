@@ -33,7 +33,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('modes', function (Blueprint $table) {
+        Schema::table('communication_logs', function (Blueprint $table) {
             $table->dropColumn('band_id');
         });
     }
