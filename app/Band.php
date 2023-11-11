@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Band extends Model
 {
+    protected $fillable = ['band', 'lower_freq', 'upper_freq']; 
+
     public static function getBandId($freq)
     {
         $bands = Band::all();
