@@ -21,6 +21,11 @@ class CommunicationLog extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function band_Category()
+    {
+        return $this->belognsTo('App\Band', 'band_id');
+    }
+
     public function my_Readability()
     {
         return $this->belongsTo('App\Readability', 'my_r', 'readability');
@@ -87,11 +92,5 @@ class CommunicationLog extends Model
         $t = new DateTime($this->time);
         $t->setTimeZone( new DateTimeZone('UTC'));
         return $t->format("Y-m-d H:i:s");
-    }
-
-    public function getBand()
-    {
-        $band = new Band();
-        return $band->getBand($this->band);
     }
 }

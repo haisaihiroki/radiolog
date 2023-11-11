@@ -14,7 +14,7 @@ class Band extends Model
         {
             if ($val->lowwer_freq < $freq && $freq < $val->upper_freq)
             {
-                return $val->band;
+                return $val;
             }
         }
         return NULL;
