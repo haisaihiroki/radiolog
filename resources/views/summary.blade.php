@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <div class="center">Summary</div>
+            <div class="center">Summary - {{ $subject }}</div>
         </div>
 
         <div class="card-body">
