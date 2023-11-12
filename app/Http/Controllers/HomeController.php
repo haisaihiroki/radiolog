@@ -11,6 +11,7 @@ use App\Mode;
 use App\Readability;
 use App\SignalStrength;
 use App\Tone;
+use App\Band;
 
 
 class HomeController extends Controller
@@ -112,6 +113,7 @@ class HomeController extends Controller
         $recode->is_public = false;
         $recode->uuid = $this->makeUUID();
         $recode->note = $request->Note;
+        $recode->band_id = Band::getBandId($recode->band);
 
         $user = Auth::user();
         $user->communicationLogs()->save($recode);
@@ -181,6 +183,7 @@ class HomeController extends Controller
         $log->his_power = $request->HisPower;
         $log->is_public = false;
         $log->note = $request->Note;
+        $log->band_id = Band::getBandId($log->band);
 
         $log->save();
 

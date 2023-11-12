@@ -21,6 +21,11 @@ class CommunicationLog extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function band_Category()
+    {
+        return $this->belognsTo('App\Band', 'band_id');
+    }
+
     public function my_Readability()
     {
         return $this->belongsTo('App\Readability', 'my_r', 'readability');
