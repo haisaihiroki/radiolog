@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\CommunicationLog;
@@ -32,7 +33,7 @@ class SummaryController extends Controller
     public function index(Request $request)
     {
         $validatedData = $request->validate([
-            'period' => 'numeric|max:3000|min:1800',
+            'period' => 'nullable|numeric|max:3000|min:1800',
         ]);
 
         $user = Auth::user();
@@ -59,11 +60,20 @@ class SummaryController extends Controller
             array_push($summary, $tmp);
         }
 
+        $latest_log = $user->communicationLogs()->orderBy('created_at', 'asc')->first();
+        $latest_year = new DateTime($latest_log->time);
+        $list_period = array();
+        for ($i=(int)$latest_year->format('Y'); $i<=date('Y'); $i++)
+        {
+            array_push($list_period, $i);
+        }
+        $list_period = array_reverse($list_period);
+
         $total = $user->communicationLogs()->get();
         $mode_analogs = Mode::getAnalogList();
         $mode_digitals = Mode::getDigitalList();
 
-        return view('summary', compact('subject', 'bands', 'summary', 'total', 'mode_analogs', 'mode_digitals'));
+        return view('summary', compact('subject', 'bands', 'summary', 'total', 'mode_analogs', 'mode_digitals', 'list_period', 'period'));
     }
 
 }

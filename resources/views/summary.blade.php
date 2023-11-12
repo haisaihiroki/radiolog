@@ -8,6 +8,25 @@
         </div>
 
         <div class="card-body">
+            <form method="get", action="{{ route('summary') }}">
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        <select class="form-control" name="period">
+                            <option value="">Total</option>
+                            @foreach($list_period as $year)
+                            @if($period == $year)
+                            <option value="{{ $year }}" selected>{{ $year }}</option>
+                            @else
+                            <option value="{{ $year }}">{{ $year }}</option>
+                            @endif
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <input type="submit" class="btn btn-primary" value="GO">
+                    </div>
+                </div>
+            </form>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
