@@ -49,13 +49,13 @@ class SummaryController extends Controller
         $bands = Band::all();
         foreach ($bands as $band)
         {
-            if ($period != -1)
+            if ($period == -1)
             {
-                $tmp = $user->communicationLogs()->where('band_id', $band->id)->whereBetween('time', [$period . '-01-01 00:00:00', $period . '-12-31 23:59:59'])->get();
+                $tmp = $user->communicationLogs()->where('band_id', $band->id)->get();
             }
             else
             {
-                $tmp = $user->communicationLogs()->where('band_id', $band->id)->get();
+                $tmp = $user->communicationLogs()->where('band_id', $band->id)->whereBetween('time', [$period . '-01-01 00:00:00', $period . '-12-31 23:59:59'])->get();
             }
             array_push($summary, $tmp);
         }
@@ -69,7 +69,14 @@ class SummaryController extends Controller
         }
         $list_period = array_reverse($list_period);
 
-        $total = $user->communicationLogs()->get();
+        if ($period == -1)
+        {
+            $total = $user->communicationLogs()->get();
+        }
+        else
+        {
+            $total = $user->communicationLogs()->whereBetween('time', [$period . '-01-01 00:00:00', $period . '-12-31 23:59:59'])->get();
+        }
         $mode_analogs = Mode::getAnalogList();
         $mode_digitals = Mode::getDigitalList();
 
