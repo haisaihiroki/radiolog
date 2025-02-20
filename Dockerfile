@@ -2,7 +2,9 @@ FROM php:8.2-apache
 RUN apt-get update && \
     apt-get install -y git \
         unzip \
-        libzip-dev && \
+        libzip-dev \
+        nodejs \
+        npm && \
     docker-php-ext-install \
         zip \
         bcmath \
@@ -13,7 +15,8 @@ RUN chown -R www-data:www-data /radiolog
 WORKDIR /radiolog
 RUN composer require kylekatarnls/update-helper \
         php-parallel-lint/php-console-color && \
-    composer install
+    composer install && \
+    npm install
 
 ENV APACHE_DOCUMENT_ROOT /radiolog/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf && \
