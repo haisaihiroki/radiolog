@@ -21,7 +21,7 @@
             </div>
 
             <h5>Date</h5>
-            <p>{{ $log->time }}</p>
+            <p>{{ $log->time }}<br /><span class="time-utc-large">UTC: {{ $log->time_utc() }}</span></p>
             <div class="row">
                 <div class="form-group col-md-5">
                     <h5>Band (MHz)</h5>
