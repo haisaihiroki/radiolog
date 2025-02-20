@@ -7,5 +7,5 @@ services:
     volumes:
       - .:/radiolog
     environment:
-      - APACHE_RUN_USER=#1000
-      - APACHE_RUN_GROUP=#1000
+      - APACHE_RUN_USER=1000
+      - APACHE_RUN_GROUP=1000
