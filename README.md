@@ -14,9 +14,6 @@ docker build . -t haisaihiroki/radiolog
 docker run -p 8080:80 -t haisaihiroki/radiolog
 ```
 
-(Debug時はこんな感じもあり)
-```
-docker run  -p 8080:80 -v `pwd`:/radiolog -t haisaihiroki/radiolog
-```
-Access your browser http://localhost:8080
+## Development
+Please use devcontainer.
 
