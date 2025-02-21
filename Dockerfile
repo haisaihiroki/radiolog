@@ -1,16 +1,10 @@
-FROM php:8.2-apache
+FROM php:8.4-apache
 
-# Install necessary packages and PHP extensions
-RUN apt-get update && apt-get install -y \
-    git \
-    unzip \
-    libzip-dev \
-    nodejs \
-    npm && \
-    docker-php-ext-install \
-    zip \
-    bcmath \
-    pdo_mysql
+# Install system dependencies
+RUN apt-get update && apt-get install -y git unzip libzip-dev
+
+# Install PHP extensions
+RUN docker-php-ext-install zip bcmath pdo_mysql
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -24,11 +18,9 @@ ADD . /radiolog
 # Set permissions
 RUN chown -R www-data:www-data /radiolog
 
-# Install PHP and Node.js dependencies
-RUN composer require kylekatarnls/update-helper \
-    php-parallel-lint/php-console-color && \
-    composer install && \
-    npm install
+# Install dependencies
+RUN composer require kylekatarnls/update-helper php-parallel-lint/php-console-color && \
+    composer install
 
 # Configure Apache
 ENV APACHE_DOCUMENT_ROOT=/radiolog/public
