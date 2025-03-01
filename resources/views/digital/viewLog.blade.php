@@ -5,7 +5,12 @@
     <div class="card">
         <div class="card-header">
             <div class="float-left center">View Log</div>
-            <a href="{{ route('editLog-digital', $uuid) }}" class="btn btn-outline-primary float-right" role="button" aria-pressed="true">Edit Log</a>
+            <form action="{{ route('deleteLog-digital', $uuid) }}" method="POST" class="float-right" onsubmit="return confirm('Are you sure you want to delete this log?');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-outline-danger" aria-pressed="true">Delete Log</button>
+            </form>
+            <a href="{{ route('editLog-digital', $uuid) }}" class="btn btn-outline-primary float-right mr-2" role="button" aria-pressed="true">Edit Log</a>
         </div>
 
         <div class="card-body">
