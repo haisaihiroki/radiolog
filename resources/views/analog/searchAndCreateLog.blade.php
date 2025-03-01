@@ -116,7 +116,7 @@
                     </div>
                     <div class="form-group col-md-2">
                         <label for="MyPower">My Power (W)</label>
-                        <input type="number" class="form-control" id="MyPower" step="0.1" name="MyPower" placeholder="5" value="{{ old('MyPower') }}">
+                        <input type="number" class="form-control" id="MyPower" step="0.1" name="MyPower" placeholder="5" value="{{ old('MyPower', $log_global_latest->my_power) }}">
                     </div>
                 </div>
 
