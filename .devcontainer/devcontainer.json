@@ -8,9 +8,6 @@
 		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
 		"dockerfile": "../Dockerfile"
 	},
-	"features": {
-		"ghcr.io/devcontainers/features/php:1": {}
-	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -20,6 +17,13 @@
 
 	// Uncomment the next line to run commands after the container is created.
 	"postCreateCommand": "apt-get update && apt-get install -y nodejs npm && npm install",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-azuretools.vscode-docker"
+			]
+		}
+	},
 
 	// Configure tool-specific properties.
 	// "customizations": {},
