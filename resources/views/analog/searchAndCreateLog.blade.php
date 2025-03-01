@@ -104,7 +104,7 @@
                         <select class="form-control" id="Mode" name="Mode" required>
                             <option value="">-</option>
                             @foreach ($modes as $mode)
-                                <option value="{{ $mode->id }}" @if(old('Mode')==$mode->id ) selected @endif>{{ $mode->name }}</option>
+                                <option value="{{ $mode->id }}" @if(old('Mode', $log_global_latest->mode_id) == $mode->id) selected @endif>{{ $mode->name }}</option>
                             @endforeach
                         </select>
                     </div>
