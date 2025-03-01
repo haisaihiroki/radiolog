@@ -112,7 +112,7 @@
                 <div class="row my-color">
                     <div class="form-group col-md-5">
                         <label for="MyQTH">My QTH</label>
-                        <input type="text" class="form-control" id="MyQTH" name="MyQTH" placeholder="Kohoku-ku, Yokohama-shi, Kanagawa, JP" value="{{ old('MyQTH') }}">
+                        <input type="text" class="form-control" id="MyQTH" name="MyQTH" placeholder="Kohoku-ku, Yokohama-shi, Kanagawa, JP" value="{{ old('MyQTH', $log_global_latest->my_qth) }}">
                     </div>
                     <div class="form-group col-md-2">
                         <label for="MyPower">My Power (W)</label>
