@@ -20,6 +20,13 @@
 
 	// Uncomment the next line to run commands after the container is created.
 	"postCreateCommand": "apt-get update && apt-get install -y nodejs npm && npm install",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-azuretools.vscode-docker"
+			]
+		}
+	},
 
 	// Configure tool-specific properties.
 	// "customizations": {},
