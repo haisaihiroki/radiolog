@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeDigitalController;
 use App\Http\Controllers\SummaryController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +29,7 @@ Route::post('/home/create/save',    [HomeController::class, 'saveCreateLog'])->n
 Route::get('/home/{uuid}',          [HomeController::class, 'viewCommunicationLog'])->name('viewLog');
 Route::get('/home/{uuid}/edit',     [HomeController::class, 'editCommunicationLog'])->name('editLog');
 Route::post('/home/{uuid}/save',    [HomeController::class, 'saveCommunicationLog'])->name('saveEditLog');
+Route::delete('/home/{uuid}/delete', [HomeController::class,'deleteCommunicationLog'])->name('deleteLog');
 Route::get('/digital/home',                 [HomeDigitalController::class, 'index'])->name('home-digital');
 Route::post('/digital/home/create/save',    [HomeDigitalController::class, 'saveCreateLog'])->name('saveLog-digital');
 Route::get('/digital/home/{uuid}',          [HomeDigitalController::class, 'viewCommunicationLog'])->name('viewLog-digital');
