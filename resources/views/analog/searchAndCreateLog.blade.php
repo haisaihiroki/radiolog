@@ -87,11 +87,11 @@
                 <div class="row">
                     <div class="form-group col-xs-8 col-sm-5 col-md-4">
                         <label for="Date">Date</label>
-                        <input type="date" class="form-control" id="Date" name="Date" value="{{ old('Date') }}" required>
+                        <input type="date" class="form-control" id="Date" name="Date" value="{{ old('Date', date('Y-m-d')) }}" required>
                     </div>
                     <div class="form-group col-xs-6 col-sm-4 col-md-3">
                         <label for="Time">Time</label>
-                        <input type="time" class="form-control" id="Time" name="Time" value="{{ old('Time') }}" required>
+                        <input type="time" class="form-control" id="Time" name="Time" value="{{ old('Time', date('H:i')) }}" required>
                     </div>
                 </div>
                 <div class="row">
