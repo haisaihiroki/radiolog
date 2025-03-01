@@ -150,6 +150,15 @@ class HomeDigitalController extends Controller
 
         return view('digital/editLog', compact('log', 'uuid', 'dateTime', 'modes'));
     }
+    
+    public function deleteCommunicationLog($uuid)
+    {
+        $user = Auth::user();
+        $log = $user->communicationLogs()->where('uuid', $uuid)->firstOrFail();
+        $log->delete();
+
+        return redirect(route('home-digital'));
+    }
 
     private function makeUUID()
     {
