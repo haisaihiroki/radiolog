@@ -190,7 +190,7 @@ class HomeController extends Controller
         return redirect(route('home'));
     }
 
-    public function delteCommunicationLog($uuid)
+    public function deleteCommunicationLog($uuid)
     {
         $user = Auth::user();
         $log = $user->communicationLogs()->where('uuid', $uuid)->firstOrFail();
