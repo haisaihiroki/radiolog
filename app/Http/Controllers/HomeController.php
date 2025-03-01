@@ -42,6 +42,7 @@ class HomeController extends Controller
             $logs = $user->communicationLogs()->where('his_callsign', $hisCallSign)->whereIn('mode_id', $modeIDs)->orderBy('created_at', 'desc')->paginate(5);
             $log_latest = $user->communicationLogs()->where('his_callsign', $hisCallSign)->whereIn('mode_id', $modeIDs)->orderBy('created_at', 'desc')->first();
             $count = $logs->total() - $logs->perPage() * ($logs->currentPage() - 1);
+            $log_global_latest = $user->communicationLogs()->orderBy('created_at', 'desc')->first();
             $modes = Mode::getAnalogList();
             $readabilities = Readability::orderBy('readability', 'desc')->get();
             $strengths = SignalStrength::orderBy('strength', 'desc')->get();
@@ -52,7 +53,7 @@ class HomeController extends Controller
                 $log_latest->his_callsign = $hisCallSign;
             }
 
-            return view('analog/searchAndCreateLog', compact('logs', 'count', 'hisCallSign', 'log_latest', 'modes', 'readabilities', 'strengths', 'tones'));
+            return view('analog/searchAndCreateLog', compact('logs', 'count', 'hisCallSign', 'log_latest', 'log_global_latest', 'modes', 'readabilities', 'strengths', 'tones'));
         }
         else
         {
