@@ -10,7 +10,7 @@
                 @method('DELETE')
                 <button type="submit" class="btn btn-outline-danger" aria-pressed="true">Delete Log</button>
             </form>
-            <a href="{{ route('editLog', $uuid) }}" class="btn btn-outline-primary float-right" role="button" aria-pressed="true">Edit Log</a>
+            <a href="{{ route('editLog', $uuid) }}" class="btn btn-outline-primary float-right mr-2" role="button" aria-pressed="true">Edit Log</a>
         </div>
 
         <div class="card-body">
