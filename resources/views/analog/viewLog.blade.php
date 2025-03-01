@@ -5,6 +5,11 @@
     <div class="card">
         <div class="card-header">
             <div class="float-left center">View Log</div>
+            <form action="{{ route('deleteLog', $uuid) }}" method="POST" class="float-right" onsubmit="return confirm('Are you sure you want to delete this log?');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-outline-danger" aria-pressed="true">Delete Log</button>
+            </form>
             <a href="{{ route('editLog', $uuid) }}" class="btn btn-outline-primary float-right" role="button" aria-pressed="true">Edit Log</a>
         </div>
 
