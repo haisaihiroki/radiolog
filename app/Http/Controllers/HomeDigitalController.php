@@ -37,6 +37,7 @@ class HomeDigitalController extends Controller
             $logs = $user->communicationLogs()->where('his_callsign', $hisCallSign)->whereIn('mode_id', $modeIDs)->orderBy('created_at', 'desc')->paginate(5);
             $log_latest = $user->communicationLogs()->where('his_callsign', $hisCallSign)->whereIn('mode_id', $modeIDs)->orderBy('created_at', 'desc')->first();
             $count = $logs->total() - $logs->perPage() * ($logs->currentPage() - 1);
+            $log_global_latest = $user->communicationLogs()->whereIn('mode_id', $modeIDs)->orderBy('created_at', 'desc')->first();
             $modes = Mode::getDigitalList();
             if (!isset($log_latest))
             {
@@ -44,7 +45,7 @@ class HomeDigitalController extends Controller
                 $log_latest->his_callsign = $hisCallSign;
             }
 
-            return view('digital/searchAndCreateLog', compact('logs', 'count', 'hisCallSign', 'log_latest', 'modes'));
+            return view('digital/searchAndCreateLog', compact('logs', 'count', 'hisCallSign', 'log_latest', 'log_global_latest', 'modes'));
         }
         else
         {
