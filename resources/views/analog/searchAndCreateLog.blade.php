@@ -87,24 +87,24 @@
                 <div class="row">
                     <div class="form-group col-xs-8 col-sm-5 col-md-4">
                         <label for="Date">Date</label>
-                        <input type="date" class="form-control" id="Date" name="Date" value="{{ old('Date', date('Y-m-d')) }}" required>
+                        <input type="date" class="form-control" id="Date" name="Date" value="{{ old('Date') }}" required>
                     </div>
                     <div class="form-group col-xs-6 col-sm-4 col-md-3">
                         <label for="Time">Time</label>
-                        <input type="time" class="form-control" id="Time" name="Time" value="{{ old('Time', date('H:i')) }}" required>
+                        <input type="time" class="form-control" id="Time" name="Time" value="{{ old('Time') }}" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-xs-8 col-sm-5 col-md-4">
                         <label for="Band">Band (MHz)</label>
-                        <input type="number" class="form-control" id="Band" step="0.000001" name="Band" placeholder="433.000" value="{{ old('Band', $log_global_latest->band) }}" required>
+                        <input type="number" class="form-control" id="Band" step="0.000001" name="Band" placeholder="433.000" value="{{ old('Band') }}" required>
                     </div>
                     <div class="form-group col-xs-6 col-sm-4 col-md-3">
                         <label for="Mode">Mode</label>
                         <select class="form-control" id="Mode" name="Mode" required>
                             <option value="">-</option>
                             @foreach ($modes as $mode)
-                                <option value="{{ $mode->id }}" @if(old('Mode', $log_global_latest->mode_id) == $mode->id) selected @endif>{{ $mode->name }}</option>
+                                <option value="{{ $mode->id }}" @if(old('Mode') == $mode->id) selected @endif>{{ $mode->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -112,11 +112,11 @@
                 <div class="row my-color">
                     <div class="form-group col-md-5">
                         <label for="MyQTH">My QTH</label>
-                        <input type="text" class="form-control" id="MyQTH" name="MyQTH" placeholder="Kohoku-ku, Yokohama-shi, Kanagawa, JP" value="{{ old('MyQTH', $log_global_latest->my_qth) }}">
+                        <input type="text" class="form-control" id="MyQTH" name="MyQTH" placeholder="Kohoku-ku, Yokohama-shi, Kanagawa, JP" value="{{ old('MyQTH') }}">
                     </div>
                     <div class="form-group col-md-2">
                         <label for="MyPower">My Power (W)</label>
-                        <input type="number" class="form-control" id="MyPower" step="0.1" name="MyPower" placeholder="5" value="{{ old('MyPower', $log_global_latest->my_power) }}">
+                        <input type="number" class="form-control" id="MyPower" step="0.1" name="MyPower" placeholder="5" value="{{ old('MyPower') }}">
                     </div>
                 </div>
 
