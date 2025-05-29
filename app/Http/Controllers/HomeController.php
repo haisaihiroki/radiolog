@@ -35,6 +35,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $hisCallSign = "";
+        $modes = Mode::getAnalogList();
         if (isset($request->HisCallSign))
         {
             $hisCallSign = strtoupper($request->HisCallSign);
@@ -63,7 +64,7 @@ class HomeController extends Controller
 
         $count = $logs->total() - $logs->perPage() * ($logs->currentPage() - 1);
 
-        return view('analog/home', compact('logs', 'count', 'hisCallSign'));
+        return view('analog/home', compact('logs', 'count', 'hisCallSign', 'modes'));
     }
 
     public function saveCreateLog(Request $request)
