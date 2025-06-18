@@ -31,6 +31,23 @@ document.getElementById('cqmode-set').addEventListener('click', function() {
     sessionStorage.setItem('cqmode-Band', document.getElementById('cqmode-Band').value);
     sessionStorage.setItem('cqmode-Mode', document.getElementById('cqmode-Mode').value);
     sessionStorage.setItem('cqmode-MyPower', document.getElementById('cqmode-MyPower').value);
+
+    let msg = document.createElement('div');
+    msg.textContent = 'Setしました';
+    msg.style.position = 'fixed';
+    msg.style.top = '30px';
+    msg.style.left = '50%';
+    msg.style.transform = 'translateX(-50%)';
+    msg.style.background = 'rgba(40,167,69,0.95)';
+    msg.style.color = '#fff';
+    msg.style.padding = '10px 20px';
+    msg.style.borderRadius = '5px';
+    msg.style.zIndex = '9999';
+    msg.style.fontSize = '1rem';
+    document.body.appendChild(msg);
+    setTimeout(() => {
+        msg.remove();
+    }, 1200);
 });
 document.getElementById('cqmode-reset').addEventListener('click', function() {
     sessionStorage.removeItem('cqmode-My-QTH');
@@ -41,6 +58,23 @@ document.getElementById('cqmode-reset').addEventListener('click', function() {
     document.getElementById('cqmode-Band').value = '';
     document.getElementById('cqmode-Mode').value = '';
     document.getElementById('cqmode-MyPower').value = '';
+
+    let msg = document.createElement('div');
+    msg.textContent = 'Clearしました';
+    msg.style.position = 'fixed';
+    msg.style.top = '30px';
+    msg.style.left = '50%';
+    msg.style.transform = 'translateX(-50%)';
+    msg.style.background = 'rgba(40,167,69,0.95)';
+    msg.style.color = '#fff';
+    msg.style.padding = '10px 20px';
+    msg.style.borderRadius = '5px';
+    msg.style.zIndex = '9999';
+    msg.style.fontSize = '1rem';
+    document.body.appendChild(msg);
+    setTimeout(() => {
+        msg.remove();
+    }, 1200);
 });
 window.addEventListener('DOMContentLoaded', function() {
     if (sessionStorage.getItem('cqmode-My-QTH')) {
