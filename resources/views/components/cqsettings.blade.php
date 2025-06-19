@@ -20,7 +20,7 @@
         <label for="cqmode-MyPower">MyPower</label>
         <input id="cqmode-MyPower" type="number" class="form-control" id="MyPower" step="0.1" name="MyPower" placeholder="0.1" value="{{ old('MyPower') }}">
     </div>
-    <div class="form-group col-md-2 d-flex align-items-end">
+    <div class="form-group col-12 col-md-2 d-flex align-items-end gap-2 mt-md-0 mt-3">
         <input type="button" class="btn btn-primary" id="cqmode-set" value="Set">
         <input type="reset" class="btn btn-secondary" id="cqmode-reset" value="Reset">
     </div>
