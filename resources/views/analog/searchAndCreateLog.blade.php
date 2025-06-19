@@ -12,7 +12,7 @@
                     <div class="form-group col-md-6">
                         <input type="text" class="form-control" name="HisCallSign" placeholder="Input the CallSign" value="{{ $hisCallSign }}">
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-2 mt-2 mt-md-0">
                         <input type="submit" class="btn btn-primary" value="Search & Create">
                     </div>
                 </div>
