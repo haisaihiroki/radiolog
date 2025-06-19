@@ -144,6 +144,22 @@
                 </div>
                 <input type="submit" class="btn btn-primary" value="登録">
             </form>
+            <script>
+                window.addEventListener('DOMContentLoaded', function() {
+                    if (sessionStorage.getItem('cqmode-My-QTH')) {
+                        document.getElementById('MyQTH').value = sessionStorage.getItem('cqmode-My-QTH');
+                    }
+                    if (sessionStorage.getItem('cqmode-Band')) {
+                        document.getElementById('Band').value = sessionStorage.getItem('cqmode-Band');
+                    }
+                    if (sessionStorage.getItem('cqmode-Mode')) {
+                        document.getElementById('Mode').value = sessionStorage.getItem('cqmode-Mode');
+                    }
+                    if (sessionStorage.getItem('cqmode-MyPower')) {
+                        document.getElementById('MyPower').value = sessionStorage.getItem('cqmode-MyPower');
+                    }
+                });
+            </script>
         </div>
     </div>
 </div>

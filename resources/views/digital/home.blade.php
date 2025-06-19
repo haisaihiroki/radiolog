@@ -24,6 +24,7 @@
                     </div>
                 </div>
             </form>
+            <x-cqsettings :modes=$modes />
             <div class="table-responsive">
                 <table class="table">
                     <thead>

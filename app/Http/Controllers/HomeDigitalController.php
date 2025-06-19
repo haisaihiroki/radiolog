@@ -30,6 +30,7 @@ class HomeDigitalController extends Controller
     {
         $user = Auth::user();
         $hisCallSign = "";
+        $modes = Mode::getDigitalList();
         if (isset($request->HisCallSign))
         {
             $hisCallSign = strtoupper($request->HisCallSign);
@@ -38,7 +39,6 @@ class HomeDigitalController extends Controller
             $log_latest = $user->communicationLogs()->where('his_callsign', $hisCallSign)->whereIn('mode_id', $modeIDs)->orderBy('created_at', 'desc')->first();
             $count = $logs->total() - $logs->perPage() * ($logs->currentPage() - 1);
             $log_global_latest = $user->communicationLogs()->whereIn('mode_id', $modeIDs)->orderBy('created_at', 'desc')->first();
-            $modes = Mode::getDigitalList();
             if (!isset($log_latest))
             {
                 $log_latest = new CommunicationLog();
@@ -55,7 +55,7 @@ class HomeDigitalController extends Controller
 
         $count = $logs->total() - $logs->perPage() * ($logs->currentPage() - 1);
 
-        return view('digital/home', compact('logs', 'count', 'hisCallSign'));
+        return view('digital/home', compact('logs', 'count', 'hisCallSign', 'modes'));
     }
 
     public function saveCreateLog(Request $request)
