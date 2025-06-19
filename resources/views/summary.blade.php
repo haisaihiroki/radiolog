@@ -10,7 +10,7 @@
         <div class="card-body">
             <form method="get", action="{{ route('summary') }}">
                 <div class="row">
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-2 mb-3">
                         <select class="form-control" name="period">
                             <option value="">Total</option>
                             @foreach($list_period as $year)
@@ -22,7 +22,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-2 mb-3">
                         <input type="submit" class="btn btn-primary" value="GO">
                     </div>
                 </div>
