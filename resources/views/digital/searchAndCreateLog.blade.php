@@ -9,10 +9,10 @@
         <div class="card-body">
             <form method="get", action="{{ route('home-digital') }}">
                 <div class="row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-6 mb-3">
                         <input type="text" class="form-control" name="HisCallSign" placeholder="Input the CallSign" value="{{ $hisCallSign }}">
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-2 mb-3">
                         <input type="submit" class="btn btn-primary" value="Search & Create">
                     </div>
                 </div>
@@ -75,31 +75,31 @@
             <form method="post", action="{{ route('saveLog-digital') }}">
                 {{ csrf_field() }}
                 <div class="row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-6 mb-3">
                         <label for="HisCallSign">His CallSign</label>
                         <input type="text" class="form-control" id="HisCallSign" name="HisCallSign" required placeholder="JXXXXX" value="{{ old('HisCallSign', $log_latest->his_callsign) }}">
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-6 mb-3">
                         <label for="HisName">His Name</label>
                         <input type="text" class="form-control" id="HisName" name="HisName" placeholder="Yamada" value="{{ old('HisName', $log_latest->his_name) }}">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-xs-8 col-sm-5 col-md-4">
+                    <div class="form-group col-xs-8 col-sm-5 col-md-4 mb-3">
                         <label for="Date">Date</label>
                         <input type="date" class="form-control" id="Date" name="Date" value="{{ old('Date', date('Y-m-d')) }}" required>
                     </div>
-                    <div class="form-group col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group col-xs-6 col-sm-4 col-md-3 mb-3">
                         <label for="Time">Time</label>
                         <input type="time" class="form-control" id="Time" name="Time" value="{{ old('Time', date('H:i')) }}" required>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-xs-8 col-sm-5 col-md-4">
+                    <div class="form-group col-xs-8 col-sm-5 col-md-4 mb-3">
                         <label for="Band">Band (MHz)</label>
                         <input type="number" class="form-control" id="Band" step="0.000001" name="Band" placeholder="433.000" value="{{ old('Band', $log_global_latest->band) }}" required>
                     </div>
-                    <div class="form-group col-xs-6 col-sm-4 col-md-3">
+                    <div class="form-group col-xs-6 col-sm-4 col-md-3 mb-3">
                         <label for="Mode">Mode</label>
                         <select class="form-control" id="Mode" name="Mode" required>
                             <option value="">-</option>
@@ -110,35 +110,35 @@
                     </div>
                 </div>
                 <div class="row my-color">
-                    <div class="form-group col-md-5">
+                    <div class="form-group col-md-5 mb-3">
                         <label for="MyQTH">My QTH/Grid</label>
                         <input type="text" class="form-control" id="MyQTH" name="MyQTH" placeholder="Kanagawa, Jpana / PM95" value="{{ old('MyQTH', $log_global_latest->my_qth) }}">
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-2 mb-3">
                         <label for="MyPower">My Power (W)</label>
                         <input type="number" class="form-control" id="MyPower" step="0.1" name="MyPower" placeholder="5" value="{{ old('MyPower', $log_global_latest->my_power) }}">
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-2 mb-3">
                         <label for="MySDigital">My Signal (dB)</label>
                         <input type="number" class="form-control" id="MySDigital" step="1" name="MySDigital" placeholder="-11" value="{{ old('MySDigital') }}">
                     </div>
                 </div>
 
                 <div class="row his-color">
-                    <div class="form-group col-md-5">
+                    <div class="form-group col-md-5 mb-3">
                         <label for="HisQTH">His QTH/Grid</label>
                         <input type="text" class="form-control" id="HisQTH" name="HisQTH" placeholder="Tokyo, Japan / PM95" value="{{ old('HisQTH', $log_latest->his_qth) }}">
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-2 mb-3">
                         <label for="HisPower">His Power (W)</label>
                         <input type="number" class="form-control" id="HisPower" step="0.1" name="HisPower" placeholder="0.1" value="{{ old('HisPower') }}">
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-2 mb-3">
                         <label for="HisSDigital">His Signal (dB)</label>
                         <input type="number" class="form-control" id="HisSDigital" step="1" name="HisSDigital" placeholder="+01" value="{{ old('HisSDigital') }}">
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="Note">Note</label>
                     <textarea id="Note" class="form-control" name="Note">{{ old('Note') }}</textarea>
                 </div>

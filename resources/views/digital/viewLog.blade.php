@@ -3,14 +3,16 @@
 @section('content')
 <div class="container">
     <div class="card">
-        <div class="card-header">
-            <div class="float-left center">View Log</div>
-            <form action="{{ route('deleteLog-digital', $uuid) }}" method="POST" class="float-right" onsubmit="return confirm('Are you sure you want to delete this log?');">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-outline-danger" aria-pressed="true">Delete Log</button>
-            </form>
-            <a href="{{ route('editLog-digital', $uuid) }}" class="btn btn-outline-primary float-right mr-2" role="button" aria-pressed="true">Edit Log</a>
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <div class="center">View Log</div>
+            <div class="d-flex">
+                <a href="{{ route('editLog-digital', $uuid) }}" class="btn btn-outline-primary ms-2" role="button" aria-pressed="true">Edit Log</a>
+                <form action="{{ route('deleteLog-digital', $uuid) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this log?');" class="ms-2">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-outline-danger" aria-pressed="true">Delete Log</button>
+                </form>
+            </div>
         </div>
 
         <div class="card-body">
