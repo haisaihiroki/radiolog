@@ -16,10 +16,10 @@
             </ul>
             <form method="get", action="{{ route('home-digital') }}">
                 <div class="row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-6 mb-3">
                         <input type="text" class="form-control" name="HisCallSign" placeholder="Input the CallSign" value="{{ $hisCallSign }}">
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-2 mb-3">
                         <input type="submit" class="btn btn-primary" value="Search & Create">
                     </div>
                 </div>

@@ -13,7 +13,7 @@
         "kylekatarnls/update-helper": "^1.2",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^4.2",
+        "laravel/ui": "^4.6",
         "php-parallel-lint/php-console-color": "^1.0"
     },
     "require-dev": {
