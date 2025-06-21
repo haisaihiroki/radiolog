@@ -15,6 +15,14 @@ WORKDIR /radiolog
 # Copy application files
 ADD . /radiolog
 
+# Install Node.js (for Laravel Mix / Vite)
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g npm
+
+# Install npm dependencies
+RUN npm install
+
 # Set permissions
 RUN chown -R www-data:www-data /radiolog
 
