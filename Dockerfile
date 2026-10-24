@@ -1,5 +1,8 @@
 FROM php:8.4-apache
 
+# Disable session upload progress tracking
+RUN echo 'session.upload_progress.enabled=0' > /usr/local/etc/php/conf.d/session-upload-progress.ini
+
 # Install system dependencies
 RUN apt-get update && apt-get install -y git unzip libzip-dev
 
