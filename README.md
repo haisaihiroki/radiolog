@@ -10,7 +10,7 @@ PC/スマホで気軽に簡単に交信Logが記録できるようにをモッ�
 ## RUN
 Build and run your computer
 ```
-docker build . -t haisaihiroki/radiolog
+docker buildx build --platform linux/amd64 --pull --load -t haisaihiroki/radiolog:latest .
 docker run -p 8080:80 -t haisaihiroki/radiolog
 ```
 

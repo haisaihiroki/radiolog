@@ -1,4 +1,4 @@
-FROM php:8.4-apache
+FROM php:8.4.28-apache
 
 # Disable session upload progress tracking
 RUN echo 'session.upload_progress.enabled=0' > /usr/local/etc/php/conf.d/session-upload-progress.ini
@@ -19,19 +19,17 @@ WORKDIR /radiolog
 ADD . /radiolog
 
 # Install Node.js (for Laravel Mix / Vite)
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs && \
-    npm install -g npm
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
+    apt-get install -y nodejs
 
 # Install npm dependencies
-RUN npm install
+RUN npm ci && npm run build
 
 # Set permissions
 RUN chown -R www-data:www-data /radiolog
 
 # Install dependencies
-RUN composer require kylekatarnls/update-helper php-parallel-lint/php-console-color && \
-    composer install
+RUN composer install --no-interaction --prefer-dist
 
 # Configure Apache
 ENV APACHE_DOCUMENT_ROOT=/radiolog/public
